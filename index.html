@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+
+    .box{
+        height: 250px;
+        width: 550px;
+        border:5px solid rgb(181, 177, 177);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: url("s.png");
+        border-radius: 50px;
+
+    }
+    body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    span{
+        color: white;
+        font-size: 100px;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-r from-pink-600 via-green-300 to-blue-400">
+    <div class="box">
+   <span id="hh">HH</span><span>:</span><span id="mm">MM</span><span>:</span><span id="ss">SS</span><span id="ampm"></span>
+    </div>
+     
+  
+<script >
+    function clock(){
+    let time=new Date()
+    let hours=time.getHours()
+    let minutes=time.getMinutes()
+    let seconds=time.getSeconds()
+    let ampm
+  
+     if(hours>12){
+        ampm="PM"
+     }else{
+        ampm="AM"
+     }
+    
+     if(hours>12){
+        hours=hours-12
+    }
+
+
+    document.getElementById('hh').innerHTML=hours.toString().padStart(2,"0")
+    document.getElementById('mm').innerHTML=minutes.toString().padStart(2,"0")
+    document.getElementById('ss').innerHTML=seconds.toString().padStart(2,"0")
+    document.getElementById('ampm').innerHTML=ampm
+    }
+    clock()//call it once so there will be no one second delay //getMonth getDate getFullYear
+ setInterval(clock,1000)
+</script>
+</body>
+</html>
